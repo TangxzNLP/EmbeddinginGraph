@@ -1,18 +1,14 @@
+# GloveCalcu.py
+# Created on:2019.01.08 @Hust
+# Author:DanielTang 
 import io
 import csv
 import numpy as np
 import re
 import time
-
 csv_reader = csv.reader(open("/home/txz/txz/labor/Code/set1.csv"))
 numcsv = np.array(list(csv_reader)).shape[0] - 1
-
-
-###Created by DanielTang @2019.01.07
-###class fo calcu sim of two word
-###input parameter of two words to be processed by task wordsim353 
-
-###calcu similarity of two vector
+#calcu similarity of two vector
 def cos_sim(vector_a, vector_b):
     vector_a = np.mat(vector_a)
     vector_b = np.mat(vector_b)
@@ -21,9 +17,7 @@ def cos_sim(vector_a, vector_b):
     cos = num / denom
     sim = (0.5 + 0.5 * cos) * 10.0
     return sim
-
-
-###find string in someone txt and show the line number of this string in txt
+#find string in someone txt and show the line number of this string in txt
 def ShowLineNum(link, str):
     with io.open(link, "r", encoding='utf-8') as f:
         # clear the file the txt related to fh-->output.txt
@@ -36,9 +30,7 @@ def ShowLineNum(link, str):
             else:
                 break
         return num
-
-
-###Store the Num th line of file datalink to file filelink
+#Store the Num th line of file datalink to file filelink
 def StoreDataToFile(datalink, filelink, num1):
     with io.open(datalink) as fh:
         with io.open(filelink, "w", encoding='utf-8') as SearchResult:
@@ -50,9 +42,7 @@ def StoreDataToFile(datalink, filelink, num1):
                 else:
                     SearchResult.write(line)
                     break
-
-
-###Main function
+#Main function
 numS1 = 0
 numS2 = 0
 datalinkString = "/home/txz/txz/labor/Code/SCBGO_py/GloveString.txt"
@@ -67,7 +57,7 @@ while line:
     data_liststr.append(str1)
     line = f.readline()
 f.close()
-
+#Recod score of wordsimresult through glove
 fresult=open("/home/txz/txz/labor/Code/SCBGO_py/wordsimresult.txt", "w")
 vector1=[0 for i in range(numcsv)]
 vector2=[0 for i in range(numcsv)]
